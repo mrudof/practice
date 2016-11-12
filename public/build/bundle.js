@@ -21529,8 +21529,9 @@
 	            _react2.default.createElement(
 	              'strong',
 	              null,
-	              'Nothing matches that search term. Please try another artist.'
-	            )
+	              'Oops! '
+	            ),
+	            ' Nothing matches that search term. Please try another artist.'
 	          )
 	        );
 	      } else {
@@ -21674,8 +21675,12 @@
 	        method: 'get',
 	        url: url
 	      }).done(function (response) {
-	        _this2.props.searchedStations(response.artists.slice(0, 6));
-	        searchContent.value = "";
+	        if (response.artists === null) {
+	          _this2.props.searchedStations([]);
+	        } else {
+	          _this2.props.searchedStations(response.artists.slice(0, 6));
+	          searchContent.value = "";
+	        }
 	      }).fail(function (err) {
 	        _this2.props.searchedStations([]);
 	      });
@@ -21692,12 +21697,12 @@
 	          _react2.default.createElement(
 	            "div",
 	            { className: "form-group" },
-	            _react2.default.createElement("input", { type: "text", className: "form-control", ref: "keyword", placeholder: "Search Artists" })
+	            _react2.default.createElement("input", { ref: "keyword", type: "text", className: "form-control", placeholder: "Search Artists" })
 	          ),
 	          _react2.default.createElement(
 	            "button",
 	            { type: "submit", className: "btn btn-default" },
-	            "Submit"
+	            _react2.default.createElement("span", { className: "glyphicon glyphicon-search" })
 	          )
 	        )
 	      );

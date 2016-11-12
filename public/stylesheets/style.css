@@ -7,3 +7,11 @@ img {
   max-width: 250px;
   max-height: 250px;
 }
+
+.navbar {
+  background-color: #D3BECF;
+}
+
+.navbar-form {
+  margin-right: 15px;
+}

@@ -7,7 +7,7 @@ class StationContainer extends Component {
     var list;
     if (this.props.stations.length === 0) {
       list = <div className="alert alert-danger" role="alert">
-              <p><strong>Nothing matches that search term. Please try another artist.</strong></p>
+              <p><strong>Oops! </strong> Nothing matches that search term. Please try another artist.</p>
             </div>
     } else {
       list = <div className="row">

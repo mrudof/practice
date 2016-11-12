@@ -19,23 +19,26 @@ class SearchBar extends Component {
       method: 'get',
       url: url
     }).done((response) => {
-      this.props.searchedStations(response.artists.slice(0,6))
-      searchContent.value = ""
+      if (response.artists === null) {
+        this.props.searchedStations([]);
+      } else {
+        this.props.searchedStations(response.artists.slice(0,6));
+        searchContent.value = "";
+      }
     }).fail((err) => {
-      this.props.searchedStations([])
+      this.props.searchedStations([]);
     });
   }
 
 
   render(){
     return (
-
       <nav className="navbar navbar-default">
         <form className="navbar-form navbar-right" role="search" onSubmit={this.handleSubmit}>
           <div className="form-group">
-            <input type="text" className="form-control" ref="keyword" placeholder="Search Artists" />
+            <input ref="keyword" type="text" className="form-control" placeholder="Search Artists"/>
           </div>
-          <button type="submit" className="btn btn-default">Submit</button>
+          <button type="submit" className="btn btn-default"><span className="glyphicon glyphicon-search"></span></button>
         </form>
       </nav>
 
